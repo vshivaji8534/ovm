@@ -1,0 +1,5 @@
+A website to cast vote to candidates, loaded by Election Commission and publish results on a specific date.
+The motivation to build such a website arises from the fact that Hon'ble Supreme court of India had declared that the Electronic voting machines used in Indian Elections of Lok Sabha and State Assemblies are safe and secure. It had also said that the software used in the EVMs cannot be made Opensource.
+I believe that an Opensource code is safer and trustable than a properiatary code.
+So, I invite the Opensource community to build a Open Voting Machine(OVM), whose code, workflow, version control, including bugs, both resolved and open are kept open for public to review, audit and contribute towards enhancement of the OVM.
+Let us Begin!
