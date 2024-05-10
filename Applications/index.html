@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 50px;
+    }
+    form {
+        display: inline-block;
+		margin-top: 20px;
+    }
+    input[type="text"], input[type="password"] {
+        padding: 8px;
+        margin: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <h1>Login or Register</h1>
+    <form>
+      
+        <label for="voter">Select User Type:</label><br>
+        <input type="radio" id="voter" name="userType" value="voter">
+        <label for="voter">Voter</label>
+        <input type="radio" id="authority" name="userType" value="authority">
+        <label for="authority">Election Authority</label><br><br>
+
+        
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button onclick="login()">Login</button>
+    </form>
+
+    <h2>Register as:</h2>
+    <button onclick="register('voter')">Voter</button>
+    <button onclick="register('authority')">Election Authority</button>
+
+    <script>
+        function login() {
+            // Add logic to handle login based on username and password
+            alert("Login functionality will be implemented here");
+        }
+        
+        function register(userType) {
+            // Add logic to handle registration based on user type
+            if (userType === 'voter') {
+                alert("Redirecting to voter registration page");
+                // Implement redirection logic here
+            } else if (userType === 'authority') {
+                alert("Redirecting to Election Authority registration page");
+                // Implement redirection logic here
+            }
+        }
+    </script>
+</body>
+</html>

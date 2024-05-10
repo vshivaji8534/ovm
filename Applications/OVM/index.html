@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vote Casting Page</title>
+</head>
+<body>
+
+<h1>Vote Casting Page</h1>
+
+<form action="#" id="voteForm">
+    <label for="election">Select Election:</label>
+    <select id="election" name="election">
+        <!-- Populate the election options dynamically -->
+    </select><br><br>
+    
+    <label for="constituency">Select Constituency:</label>
+    <select id="constituency" name="constituency">
+        <!-- Populate the constituency options dynamically based on the selected election -->
+    </select><br><br>
+    
+    <label for="candidate">Select Candidate:</label>
+    <select id="candidate" name="candidate">
+        <!-- Populate the candidate options dynamically based on the selected constituency -->
+    </select><br><br>
+    
+    <input type="submit" value="Cast Vote">
+</form>
+
+<script>
+    // Fetch elections data and populate the election dropdown
+    fetch('/getElections')
+        .then(response => response.json())
+        .then(data => {
+            const electionDropdown = document.getElementById('election');
+            data.forEach(election => {
+                const option = document.createElement('option');
+                option.text = election.name;
+                option.value = election.id;
+                electionDropdown.appendChild(option);
+            });
+        });
+
+    // Update constituencies dropdown based on the selected election
+    document.getElementById('election').addEventListener('change', function() {
+        const selectedElectionId = this.value;
+        fetch(`/getConstituencies?electionId=${selectedElectionId}`)
+            .then(response => response.json())
+            .then(data => {
+                const constituencyDropdown = document.getElementById('constituency');
+                constituencyDropdown.innerHTML = ''; // Clear existing options
+                data.forEach(constituency => {
+                    const option = document.createElement('option');
+                    option.text = constituency.name;
+                    option.value = constituency.id;
+                    constituencyDropdown.appendChild(option);
+                });
+            });
+    });
+
+    // Update candidates dropdown based on the selected constituency
+    document.getElementById('constituency').addEventListener('change', function() {
+        const selectedConstituencyId = this.value;
+        fetch(`/getCandidates?constituencyId=${selectedConstituencyId}`)
+            .then(response => response.json())
+            .then(data => {
+                const candidateDropdown = document.getElementById('candidate');
+                candidateDropdown.innerHTML = ''; // Clear existing options
+                data.forEach(candidate => {
+                    const option = document.createElement('option');
+                    option.text = candidate.name;
+                    option.value = candidate.id;
+                    candidateDropdown.appendChild(option);
+                });
+            });
+    });
+</script>
+
+</body>
+</html>
